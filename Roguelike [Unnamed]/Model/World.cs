@@ -27,70 +27,85 @@ namespace Model
         {
             ResSize = resSize;
             MapSize = mapSize;
-            Map = new Tile[mapSize-1,mapSize-1]; //Row , Column
+            Map = new Tile[mapSize - 1, mapSize - 1]; //Row , Column
             tileOptions.Add("2Way"); tileOptions.Add("3Way"); tileOptions.Add("4Way"); tileOptions.Add("LTile"); tileOptions.Add("EndTile");
         }
         public void generateWorld()
         {
-
-            for (int Row = 0; Row < MapSize; Row++)
+            generate(MapSize / 2, MapSize / 2);
+        }
+        private void generate(int Row, int Column)
+        {
+            if (Row == 0) //If Row == 0
             {
-                for (int Column = 0; Column < MapSize; Column++)
+                top = false;
+            }
+            if (Row == MapSize - 1) //If Row == Max Size
+            {
+                bot = false;
+            }
+            if (Column == 0) //If Column == 0
+            {
+                left = false;
+            }
+            if (Column == MapSize - 1) //If Column == Max Size
+            {
+                right = false;
+            }
+            if (Row != 0 && Map[Row - 1, Column].bot == false)
+            {
+                bot = false;
+            }
+            if (Row != MapSize - 1 && Map[Row + 1, Column].top == false)
+            {
+                top = false;
+            }
+            if (Column != 0 && Map[Row, Column - 1].right == false)
+            {
+                bot = false;
+            }
+            if (Column != MapSize - 1 && Map[Row, Column + 1].bot == false)
+            {
+                bot = false;
+            }
+            while (!tileWorks)
+            {
+                tryCounter++;
+                randomTile = tileOptions[random.Next(0, 4)];   //TODO: Tweak this so map is more tiles than black space
+                testTile = new Tile(randomTile);
+                for (int counter = 0; counter < 4; counter++)
                 {
-                    if(Row == 0) //If Row == 0
+                    if (testTile.top == top && testTile.left == left && testTile.bot == bot && testTile.right == right)
                     {
-                        top = false;
+                        tileWorks = true;
+                        Map[Row, Column] = testTile;
                     }
-                    if (Row == MapSize - 1) //If Row == Max Size
-                    {
-                        bot = false;
-                    }
-                    if(Column == 0) //If Column == 0
-                    {
-                        left = false;
-                    }
-                    if(Column == MapSize - 1) //If Column == Max Size
-                    {
-                        right = false;
-                    }
-                    if(Row != 0 && Map[Row - 1, Column].bot == false)
-                    {
-                        bot = false;
-                    }
-                    if (Row != MapSize-1 && Map[Row + 1, Column].top == false)
-                    {
-                        top = false;
-                    }
-                    if (Column != 0 && Map[Row, Column - 1].right == false)
-                    {
-                        bot = false;
-                    }
-                    if (Column != MapSize - 1 && Map[Row, Column + 1].bot == false)
-                    {
-                        bot = false;
-                    }
-                    while (!tileWorks)
-                    {
-                        tryCounter++;
-                        randomTile = tileOptions[random.Next(0,4)];   //TODO: Tweak this so map is more tiles than black space
-                        testTile = new Tile(randomTile);
-                        for (int counter = 0; counter < 4; counter++)
-                        {
-                            if (testTile.top == top && testTile.left == left && testTile.bot == bot && testTile.right == right)
-                            {
-                                tileWorks = true;
-                                Map[Row, Column] = testTile;
-                            }
-                            testTile.Rotate();
-                        }
-                        if(tryCounter == 15)
-                        {
-                            tileWorks = true;
-                            Map[Row, Column] = new Tile("Empty");
-                        }
-                    }
+                    testTile.Rotate();
+                }
+                if (tryCounter == 15)
+                {
+                    tileWorks = true;
+                    Map[Row, Column] = new Tile("Empty");
                 }
             }
+            if(Row != 0)
+            {
+                generate(Row - 1, Column);
+            }
+            if(Row != MapSize - 1)
+            {
+                generate(Row + 1, Column);
+            }
+            if(Column != 0)
+            {
+                generate(Row, Column - 1);
+            }
+            if(Column != MapSize - 1)
+            {
+                generate(Row, Column + 1);
+            }
         }
+    }
+}
     }
 }
