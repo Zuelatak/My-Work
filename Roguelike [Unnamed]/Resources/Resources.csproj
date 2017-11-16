@@ -55,6 +55,7 @@
     <Content Include="Images\2-way.jpg" />
     <Content Include="Images\3-way.jpg" />
     <Content Include="Images\4-way.jpg" />
+    <Content Include="Images\Black.jpg" />
     <Content Include="Images\End.jpg" />
     <Content Include="Images\L.jpg" />
   </ItemGroup>

@@ -59,7 +59,7 @@ namespace Model
             }
             else if(tileName == "Empty")
             {
-                .
+                image = Image.FromFile("../../../Resources/Images/Black.jpg");
                 top = false;
                 left = false;
                 right = false;

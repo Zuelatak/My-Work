@@ -9,10 +9,10 @@ namespace Controller
 {
     public class controller
     {
-        public World mainWorld { get; private set; }
+        //public World mainWorld { get; private set; }
         static void Main(string[] args)
         {
-            mainWorld.generateWorld();
+            //mainWorld.generateWorld();
         }
     }
 }
