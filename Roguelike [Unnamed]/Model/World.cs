@@ -105,6 +105,13 @@ namespace Model
                 generate(Row, Column + 1);
             }
         }
+        public IEnumerable<Tile> getTiles()
+        {
+            foreach (var item in Map)
+            {
+                yield return item;
+            }
+        }
     }
 }
     }

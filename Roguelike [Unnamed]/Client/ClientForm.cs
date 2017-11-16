@@ -15,6 +15,8 @@ namespace Roguelike__Unnamed_
     public partial class ClientForm : Form
     {
         private World mainWorld;
+        private int tileX;
+        private int tileY;
         public ClientForm()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace Roguelike__Unnamed_
                 {
                     panel.Width = controller.World.Size;
                     panel.Height = controller.World.Size;
-                    foreach (Ship ship in controller.World.GetShips())
+                    foreach (Ship ship in controller.mainWorld.getTiles())
                     {
                         if (!currentShipSprites.ContainsKey(ship.ID))
                         {
@@ -64,6 +66,12 @@ namespace Roguelike__Unnamed_
                 Image Welcome = Image.FromFile("../../../Resources/Images/Welcome.png");
                 e.Graphics.DrawImage(Welcome, Location);
             }
+        }
+        private void TileDrawer(object o, PaintEventArgs e)
+        {
+            Image temp = mainWorld.Map[((Ship)o).ID];
+            e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            e.Graphics.DrawImage(i, shipDestRectangle, 0, 0, i.Width, i.Height, GraphicsUnit.Pixel);
         }
     }
 }
