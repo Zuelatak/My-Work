@@ -97,6 +97,10 @@ namespace Model
                //     Map[Row, Column] = new Tile("4Way");
                // }
             }
+            top = true;
+            left = true;
+            right = true;
+            bot = true;
             tileWorks = false;
             tryCounter = 0; //Why did this break everything :(
             if (Row != 0 && Map[Row-1,Column] == null)
