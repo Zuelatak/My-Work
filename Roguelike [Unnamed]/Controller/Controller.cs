@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    class Program
+    public class controller
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

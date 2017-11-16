@@ -57,8 +57,16 @@ namespace Model
                 right = false;
                 bot = false;
             }
+            else if(tileName == "Empty")
+            {
+                .
+                top = false;
+                left = false;
+                right = false;
+                bot = false;
+            }
         }
-        public void Roate()
+        public void Rotate()
         {
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             bool tempTop = top;

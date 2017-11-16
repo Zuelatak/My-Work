@@ -33,9 +33,9 @@
             // 
             // panel
             // 
-            this.panel.Location = new System.Drawing.Point(5, 5);
+            this.panel.Location = new System.Drawing.Point(8, 2);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(878, 565);
+            this.panel.Size = new System.Drawing.Size(11, 11);
             this.panel.TabIndex = 0;
             this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
             // 
@@ -43,10 +43,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(909, 582);
             this.Controls.Add(this.panel);
+            this.DoubleBuffered = true;
             this.Name = "ClientForm";
-            this.Text = "ClientForm";
+            this.Text = "Roguelike [Unnamed]";
             this.ResumeLayout(false);
 
         }
