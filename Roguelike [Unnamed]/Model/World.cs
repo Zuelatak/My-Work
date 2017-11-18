@@ -52,25 +52,35 @@ namespace Model
                 {
                     right = false;
                 }
-            if (Map[Row, Column] != null)
+            if (Row != 0 && Map[Row - 1, Column] != null)
             {
-                if (Row != 0 && Map[Row - 1, Column].bot == false)
-                {
-                    bot = false;
-                }
-                if (Row != MapSize - 1 && Map[Row + 1, Column].top == false)
-                {
-                    top = false;
-                }
-                if (Column != 0 && Map[Row, Column - 1].right == false)
-                {
-                    bot = false;
-                }
-                if (Column != MapSize - 1 && Map[Row, Column + 1].bot == false)
+                if (Row != 0 && Map[Row - 1, Column].bot == false) //If the tile above is connected by a wall or door
                 {
                     bot = false;
                 }
             }
+            if (Row != MapSize - 1 && Map[Row + 1, Column] != null)
+            {
+                if (Row != MapSize - 1 && Map[Row + 1, Column].top == false) //If the tile below is connected by a wall or door
+                {
+                    top = false;
+                }
+            }
+            if (Column != 0 && Map[Row, Column - 1] != null)
+            {
+                if (Column != 0 && Map[Row, Column - 1].right == false) //If the tile to the left is connected by a wall or door
+                {
+                    bot = false;
+                }
+            }
+            if (Column != MapSize - 1 && Map[Row, Column + 1] != null)
+            {
+                if (Column != MapSize - 1 && Map[Row, Column + 1].bot == false) //If the tile to the right is connected by a wall or door
+                {
+                    bot = false;
+                }
+            }
+            
 
             while (!tileWorks)
             {
@@ -82,27 +92,23 @@ namespace Model
                     if (testTile.top == top && testTile.left == left && testTile.bot == bot && testTile.right == right)
                     {
                         tileWorks = true;
-                        Map[Row, Column] = testTile;
+                        Map[Row, Column] = new Tile(randomTile);
                     }
-                    testTile.Rotate();
+
+                        testTile.Rotate();
                 }
-                if (tryCounter == 15)
+                if (tryCounter == 100)
                 {
                     tileWorks = true;
                     Map[Row, Column] = new Tile("Empty");
                 }
-               // if (Row == MapSize / 2 && Column == MapSize / 2)
-               // {
-               //     tileWorks = true;
-               //     Map[Row, Column] = new Tile("4Way");
-               // }
             }
             top = true;
             left = true;
             right = true;
             bot = true;
             tileWorks = false;
-            tryCounter = 0; //Why did this break everything :(
+            tryCounter = 0;
             if (Row != 0 && Map[Row-1,Column] == null)
             {
                 generate(Row - 1, Column);
