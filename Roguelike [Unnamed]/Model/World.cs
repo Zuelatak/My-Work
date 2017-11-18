@@ -105,18 +105,22 @@ namespace Model
             tryCounter = 0; //Why did this break everything :(
             if (Row != 0 && Map[Row-1,Column] == null)
             {
+                Console.WriteLine(Row + "" + Column);
                 generate(Row - 1, Column);
             }
             if (Column != 0 && Map[Row, Column - 1] == null)
             {
+                Console.WriteLine(Row + "" + Column);
                 generate(Row, Column - 1);
             }
             if (Column != MapSize - 1 && Map[Row, Column + 1] == null)
             {
+                Console.WriteLine(Row + "" + Column);
                 generate(Row, Column + 1);
             }
             if (Row != MapSize - 1 && Map[Row + 1, Column] == null)
             {
+                Console.WriteLine(Row + "" + Column);
                 generate(Row + 1, Column);
             }
         }
