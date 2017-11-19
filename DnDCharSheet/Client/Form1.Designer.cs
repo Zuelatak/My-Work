@@ -32,6 +32,9 @@
             this.textConstitution = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ClassesAndLevels = new System.Windows.Forms.DataGridView();
+            this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupIntelligence = new System.Windows.Forms.GroupBox();
             this.textIntelligence = new System.Windows.Forms.TextBox();
             this.labelIntelligence = new System.Windows.Forms.Label();
@@ -52,13 +55,11 @@
             this.labelDexterity = new System.Windows.Forms.Label();
             this.groupConstitution = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.hScrollBar2 = new System.Windows.Forms.HScrollBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.hScrollBar2 = new System.Windows.Forms.HScrollBar();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClassesAndLevels)).BeginInit();
             this.groupIntelligence.SuspendLayout();
             this.groupWisdom.SuspendLayout();
             this.groupCharName.SuspendLayout();
@@ -66,7 +67,6 @@
             this.groupCharisma.SuspendLayout();
             this.groupDexterity.SuspendLayout();
             this.groupConstitution.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelConstitution
@@ -102,9 +102,10 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage1.Controls.Add(this.ClassesAndLevels);
             this.tabPage1.Controls.Add(this.groupIntelligence);
             this.tabPage1.Controls.Add(this.groupWisdom);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupCharName);
             this.tabPage1.Controls.Add(this.groupStrength);
             this.tabPage1.Controls.Add(this.groupCharisma);
@@ -116,7 +117,35 @@
             this.tabPage1.Size = new System.Drawing.Size(529, 733);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ClassesAndLevels
+            // 
+            this.ClassesAndLevels.AllowUserToAddRows = false;
+            this.ClassesAndLevels.AllowUserToDeleteRows = false;
+            this.ClassesAndLevels.AllowUserToResizeColumns = false;
+            this.ClassesAndLevels.AllowUserToResizeRows = false;
+            this.ClassesAndLevels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClassesAndLevels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Class,
+            this.Level});
+            this.ClassesAndLevels.Location = new System.Drawing.Point(98, 75);
+            this.ClassesAndLevels.Name = "ClassesAndLevels";
+            this.ClassesAndLevels.RowHeadersVisible = false;
+            this.ClassesAndLevels.Size = new System.Drawing.Size(204, 287);
+            this.ClassesAndLevels.TabIndex = 5;
+            // 
+            // Class
+            // 
+            this.Class.HeaderText = "Class";
+            this.Class.Name = "Class";
+            this.Class.ReadOnly = true;
+            this.Class.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Level
+            // 
+            this.Level.HeaderText = "Level";
+            this.Level.Name = "Level";
+            this.Level.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // groupIntelligence
             // 
@@ -319,43 +348,6 @@
             this.tabPage2.Text = "Bio";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // hScrollBar2
-            // 
-            this.hScrollBar2.Location = new System.Drawing.Point(448, 369);
-            this.hScrollBar2.Name = "hScrollBar2";
-            this.hScrollBar2.Size = new System.Drawing.Size(8, 8);
-            this.hScrollBar2.TabIndex = 21;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(193, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(330, 78);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Character Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(81, 51);
-            this.textBox1.MaxLength = 9999;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textStrength_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 24);
-            this.label2.TabIndex = 0;
-            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -365,6 +357,13 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Spells";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // hScrollBar2
+            // 
+            this.hScrollBar2.Location = new System.Drawing.Point(448, 369);
+            this.hScrollBar2.Name = "hScrollBar2";
+            this.hScrollBar2.Size = new System.Drawing.Size(8, 8);
+            this.hScrollBar2.TabIndex = 21;
             // 
             // mainForm
             // 
@@ -378,6 +377,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ClassesAndLevels)).EndInit();
             this.groupIntelligence.ResumeLayout(false);
             this.groupIntelligence.PerformLayout();
             this.groupWisdom.ResumeLayout(false);
@@ -392,8 +392,6 @@
             this.groupDexterity.PerformLayout();
             this.groupConstitution.ResumeLayout(false);
             this.groupConstitution.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -425,10 +423,10 @@
         private System.Windows.Forms.GroupBox groupCharName;
         private System.Windows.Forms.TextBox textCharName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView ClassesAndLevels;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Class;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
     }
 }
 

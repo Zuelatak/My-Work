@@ -15,6 +15,18 @@ namespace Client
         public mainForm()
         {
             InitializeComponent();
+            ClassesAndLevels.Rows.Add("Barbarian");
+            ClassesAndLevels.Rows.Add("Bard");
+            ClassesAndLevels.Rows.Add("Cleric");
+            ClassesAndLevels.Rows.Add("Druid");
+            ClassesAndLevels.Rows.Add("Fighter");
+            ClassesAndLevels.Rows.Add("Monk");
+            ClassesAndLevels.Rows.Add("Paladin");
+            ClassesAndLevels.Rows.Add("Ranger");
+            ClassesAndLevels.Rows.Add("Rogue");
+            ClassesAndLevels.Rows.Add("Sorceror");
+            ClassesAndLevels.Rows.Add("Warlock");
+            ClassesAndLevels.Rows.Add("Wizard");
         }
 
         private void textStrength_TextChanged(object sender, EventArgs e)
