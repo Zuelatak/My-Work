@@ -16,24 +16,28 @@ namespace Roguelike__Unnamed_
         private World mainWorld;
         private int tileX;
         private int tileY;
+        Rectangle tileRectangle;
         public ClientForm()
         {
             InitializeComponent();
-            mainWorld = new World(800, 5);
+            mainWorld = new World(1000, 5);
             mainWorld.generateWorld();
             panel.Height = mainWorld.ResSize;
             panel.Width = mainWorld.ResSize;
-            foreach (var item in mainWorld.Map)
-            {
-                Console.WriteLine(item.image.ToString()); 
-            }
-
         }
 
         private void panel_Paint(object sender, PaintEventArgs e) //Everytime keypress invalidate form
         {
-            Image m = mainWorld.Map[mainWorld.MapSize / 2, mainWorld.MapSize / 2].image;
-            e.Graphics.DrawImage(m, Location);
+            for (int Row = 0; Row < mainWorld.MapSize; Row++)
+            {
+                for (int Column = 0; Column < mainWorld.MapSize; Column++)
+                {
+                    tileX = Row * 200;
+                    tileY = Column * 200;
+                    tileRectangle = new Rectangle(tileX, tileY, 200, 200);
+                    e.Graphics.DrawImage(mainWorld.Map[Row,Column].image, tileRectangle);
+                }
+            } 
         }
         public void updateForm()
         {
